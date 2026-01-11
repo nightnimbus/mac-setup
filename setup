@@ -1,9 +1,27 @@
 #!/bin/bash
 
+set -euo pipefail
+
 # Configuration
-SCRIPT_DIR=$(pwd)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 HOME_SRC_DIR="$SCRIPT_DIR/\$HOME"
 BACKUP_DIR="$HOME/dotfiles_backup_$(date +%Y%m%d_%H%M%S)"
+
+echo "Installing apps"
+
+if ! command -v brew >/dev/null 2>&1; then
+    echo "Homebrew not found. Installing Homebrew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    echo "Installing Oh My Zsh..."
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+fi
+
+brew install --cask \
+    ghostty \
+    nikitabobko/tap/aerospace
 
 echo "Setting up \$HOME"
 
@@ -46,4 +64,4 @@ find "$HOME_SRC_DIR" -type f | while read -r file_src; do
     ln -s "$file_src" "$file_dst"
 done
 
-echo "Done! Backups (if any) are in $BACKUP_DIR"
+echo "Done dotfiles! Backups (if any) are in $BACKUP_DIR"
