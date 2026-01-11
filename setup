@@ -1,0 +1,49 @@
+#!/bin/bash
+
+# Configuration
+SCRIPT_DIR=$(pwd)
+HOME_SRC_DIR="$SCRIPT_DIR/\$HOME"
+BACKUP_DIR="$HOME/dotfiles_backup_$(date +%Y%m%d_%H%M%S)"
+
+echo "Setting up \$HOME"
+
+# Create a backup directory if we need to move real files
+mkdir -p "$BACKUP_DIR"
+
+# Find all files in the source directory (recursively)
+find "$HOME_SRC_DIR" -type f | while read -r file_src; do
+
+    # Calculate the destination path
+    # Removes the HOME_SRC_DIR prefix and replaces it with the actual home path
+    rel_path="${file_src#$HOME_SRC_DIR/}"
+    file_dst="$HOME/$rel_path"
+
+    # Ensure the parent directory exists in the destination
+    dst_dir=$(dirname "$file_dst")
+    if [ ! -d "$dst_dir" ]; then
+        echo "Creating directory: $dst_dir"
+        mkdir -p "$dst_dir"
+    fi
+
+    # Backup logic
+    if [ -e "$file_dst" ]; then
+        if [ -L "$file_dst" ]; then
+            # It's already a symlink, just remove it to make room for the new one
+            rm "$file_dst"
+        else
+            # Calculate backup path preserving structure
+            backup_target="$BACKUP_DIR/$rel_path"
+            mkdir -p "$(dirname "$backup_target")"
+
+            # It's a real file, move it to the backup folder
+            echo "Backing up: $file_dst -> $backup_target"
+            mv "$file_dst" "$backup_target"
+        fi
+    fi
+
+    # Create the symlink
+    echo "Symlinking: $file_src -> $file_dst"
+    ln -s "$file_src" "$file_dst"
+done
+
+echo "Done! Backups (if any) are in $BACKUP_DIR"
