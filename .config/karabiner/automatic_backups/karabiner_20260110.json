@@ -1,0 +1,26 @@
+{
+    "profiles": [
+        {
+            "devices": [
+                {
+                    "disable_built_in_keyboard_if_exists": true,
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 9760,
+                        "vendor_id": 6645
+                    }
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": true,
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": true,
+                        "vendor_id": 2007
+                    }
+                }
+            ],
+            "name": "Default profile",
+            "selected": true
+        }
+    ]
+}
