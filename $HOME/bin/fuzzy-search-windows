@@ -1,0 +1,8 @@
+#!/bin/zsh -l
+
+source "$HOME/.zshrc"
+ff
+# Closing the window too fast after execution
+# yanks the focus back to where the script window spanned.
+# Known mac api race condition
+sleep 1

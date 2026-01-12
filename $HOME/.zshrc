@@ -15,7 +15,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export XDG_CONFIG_HOME="$HOME/.config"
 
-# Terminal Application Search
 ff() {
-    aerospace list-windows --all | fzf --bind 'enter:execute(aerospace focus --window-id {1})+abort'
+    local target_id=$(aerospace list-windows --all | fzf --height 40% --reverse | awk '{print $1}')
+    if [ -n "$target_id" ]; then
+        aerospace focus --window-id "$target_id"
+    fi
 }
