@@ -17,7 +17,8 @@ fi
 # GUI Apps
 brew install --cask \
     ghostty \
-    nikitabobko/tap/aerospace
+    nikitabobko/tap/aerospace \
+    anomalyco/tap/opencode
 
 # CLI Apps
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
