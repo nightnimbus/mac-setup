@@ -17,8 +17,7 @@ fi
 # GUI Apps
 brew install --cask \
     ghostty \
-    nikitabobko/tap/aerospace \
-    anomalyco/tap/opencode
+    nikitabobko/tap/aerospace
 
 # CLI Apps
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
@@ -27,7 +26,8 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
 fi
 
 brew install \
-    fzf
+    fzf \
+    anomalyco/tap/opencode
 
 echo "Setting up \$HOME"
 
