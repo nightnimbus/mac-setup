@@ -28,7 +28,8 @@ fi
 brew install \
     fzf \
     anomalyco/tap/opencode \
-    python
+    python \
+    uv
 
 echo "Setting up \$HOME"
 
