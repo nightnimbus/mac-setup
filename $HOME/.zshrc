@@ -10,6 +10,7 @@ export PATH="/usr/local/mysql/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="$PATH:/Users/victor/code/developers-local-setup/scripts"
 export PATH="$PATH:/Users/victor/code/k8s-infrastructure/outputs/ssh/scripts/victor.maille"
+export PATH="$HOME/.local/bin:$PATH"
 export KUBECONFIG="$HOME/.kube/config:$HOME/.kube/dev-dev-cluster:$HOME/.kube/prod-prod-cluster"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
