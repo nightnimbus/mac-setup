@@ -33,6 +33,9 @@ brew install \
     git-lfs \
     wavpack
 
+echo "Installing Claude Code..."
+curl -fsSL https://claude.ai/install.sh | bash
+
 echo "Setting up \$HOME"
 
 # Create a backup directory if we need to move real files
