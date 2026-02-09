@@ -29,7 +29,9 @@ brew install \
     fzf \
     anomalyco/tap/opencode \
     python \
-    uv
+    uv \
+    git-lfs \
+    wavpack
 
 echo "Setting up \$HOME"
 
