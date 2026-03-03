@@ -11,7 +11,8 @@ export PATH="$HOME/bin:$PATH"
 export PATH="$PATH:/Users/victor/code/developers-local-setup/scripts"
 export PATH="$PATH:/Users/victor/code/k8s-infrastructure/outputs/ssh/scripts/victor.maille"
 export PATH="$HOME/.local/bin:$PATH"
-export KUBECONFIG="$HOME/.kube/config:$HOME/.kube/dev-dev-cluster:$HOME/.kube/prod-prod-cluster"
+export KUBECONFIG="$HOME/.kube/config:$HOME/.kube/dev-dev.aws-config-block:$HOME/.kube/dev-staging.aws-config-block:$HOME/.kube/prod-prod.aws-config-block"
+export KUBE_CONFIG_PATHS=$KUBECONFIG
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
